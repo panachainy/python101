@@ -11,3 +11,8 @@
 - `conda activate django`
 
 - `pip install Django`
+
+- create new project `django-admin startproject <your-project-name>`
+
+
+ref: https://www.djangoproject.com/download/

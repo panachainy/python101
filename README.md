@@ -37,3 +37,5 @@ ref: https://www.django-rest-framework.org/
 ref-test: https://docs.djangoproject.com/en/3.0/intro/tutorial05/#tests-will-save-you-time
 
 ref-swagger: https://django-rest-swagger.readthedocs.io/en/latest/
+
+ref-lib: https://www.reddit.com/r/django/comments/epooab/what_public_apps_do_you_use_with_mostall_of_your/

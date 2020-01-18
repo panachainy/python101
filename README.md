@@ -16,6 +16,8 @@ You can run with `python manage.py runserver`
 
 - Create new project `django-admin startproject <your-project-name>`
 
+- freeze version dependency `pip freeze > requirements.txt`
+
 ## Migration
 
 - python manage.py makemigrations tweet

@@ -2,6 +2,8 @@
 
 Local :http://127.0.0.1:8000/tweet/
 
+You can run with `python manage.py runserver`
+
 ## Starter
 
 - install `https://www.anaconda.com/distribution/#download-section` (Python 2.7 version)
@@ -14,12 +16,15 @@ Local :http://127.0.0.1:8000/tweet/
 
 - Create new project `django-admin startproject <your-project-name>`
 
+- freeze version dependency `pip freeze > requirements.txt`
+
+- update dependency `pip install -r /code/requirements.txt`
+
 ## Migration
 
 - python manage.py makemigrations tweet
 
 - python manage.py migrate
-
 
 ## Ref
 

@@ -14,9 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from rest_framework_swagger.views import get_swagger_view
+from django.conf.urls import url, include
+
+schema_view = get_swagger_view(title='Tweeter API')
 
 urlpatterns = [
+    url(r'^$', schema_view),
     path('admin/', admin.site.urls),
     path('tweet/', include('tweet.urls'))
 ]

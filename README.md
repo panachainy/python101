@@ -18,7 +18,7 @@ You can run with `python manage.py runserver`
 
 - freeze version dependency `pip freeze > requirements.txt`
 
-- update dependency `pip install -r /code/requirements.txt`
+- update dependency `pip install -r requirements.txt`
 
 ## Migration
 

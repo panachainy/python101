@@ -1,30 +1,44 @@
 # python101
 
-Local :http://127.0.0.1:8000/tweet/
+Local: http://127.0.0.1:8000
 
-You can run with `python manage.py runserver`
+You can run with `run-loc.sh`
 
-## Starter
+## First time to clone
 
-- install `https://www.anaconda.com/distribution/#download-section` (Python 2.7 version)
+- You must have conda and prepared environment.
+- Update dependency `pip install -r requirements.txt`
+- Run project with `python manage.py runserver`
+- Root page http://127.0.0.1:8000/
+- Get tweet list http://127.0.0.1:8000/tweets/
 
-- `conda create -n django python=3.7`
+> Simple script for prepared `init.sh`
 
-- `conda activate django`
+> Simple script for run `run-loc.sh`
 
-- `pip install Django`
+## Starter 101
 
-- Create new project `django-admin startproject <your-project-name>`
+- Install [CONDA](https://www.anaconda.com/distribution/#download-section)
 
-- update dependency `pip install -r requirements.txt`
+- Creat conda environment (VM) `conda create -n django python=3.7`
+
+- Active your conda environment `conda activate django`
+
+- Install Django on your environment `pip install Django`
+
+- Create new project with admin `django-admin startproject <your-project-name>`
 
 > If you have new dependency you can freeze your dependency by `pip freeze > requirements.txt` command.
 
-## Migration
+## Migration 101
 
-- python manage.py makemigrations tweet (add migration)
+### Add migration
 
-- python manage.py migrate (update your DB)
+`python manage.py makemigrations <your-migration-name>`
+
+### Update your DB
+
+`python manage.py migrate`
 
 ## Ref
 

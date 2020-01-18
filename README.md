@@ -22,9 +22,9 @@ You can run with `python manage.py runserver`
 
 ## Migration
 
-- python manage.py makemigrations tweet
+- python manage.py makemigrations tweet (add migration)
 
-- python manage.py migrate
+- python manage.py migrate (update your DB)
 
 ## Ref
 

@@ -18,7 +18,7 @@ def tweet_list(request, format=None):
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        serializer = TweetSerializer(data=request.data)
+        serializer = TweetSerializer(data=request.data["tweet"])
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -30,16 +30,16 @@ def tweet_detail(request, pk, format=None):
     Retrieve, update or delete a code snippet.
     """
     try:
-        snippet = Snippet.objects.get(pk=pk)
-    except Snippet.DoesNotExist:
+        tweet = Tweet.objects.get(pk=pk)
+    except Tweet.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = SnippetSerializer(snippet)
+        serializer = TweetSerializer(tweet)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = SnippetSerializer(snippet, data=request.data)
+        serializer = TweetSerializer(tweet, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

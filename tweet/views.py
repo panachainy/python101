@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from tweet.models import Tweet
 from tweet.serializers import TweetSerializer
+from tweet.tweetmanament import TweetManagement
 
 #def index(request):
 #    return HttpResponse("Hello, world. You're at the polls index.")
@@ -22,29 +23,36 @@ def tweet_list(request, format=None):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def tweet_detail(request, pk, format=None):
+@api_view(['POST','PUT','DELETE'])
+def tweet_retweet(request, id, format=None):
     """
     Retrieve, update or delete a code snippet.
     """
     try:
-        tweet = Tweet.objects.get(pk=pk)
+        tweet = Tweet.objects.get(pk=id)
     except Tweet.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
-    if request.method == 'GET':
-        serializer = TweetSerializer(tweet)
-        return Response(serializer.data)
-
-    elif request.method == 'PUT':
-        serializer = TweetSerializer(tweet, data=request.data)
+    if request.method == 'PUT':
+        serializer = TweetSerializer(tweet,data=request.data["tweet"])
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    elif request.method == 'POST':
+        data = request.data["tweet"]
+        data["is_retweet"] = True
+        serializer = TweetSerializer(data=data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        snippet.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        try:
+            tweet.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except:
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)

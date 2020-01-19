@@ -44,6 +44,10 @@ You can run with `run-loc.sh`
 
 `python manage.py createsuperuser`
 
+## Info
+
+- Status code https://www.django-rest-framework.org/api-guide/status-codes
+
 ## Ref
 
 ref: https://towardsdatascience.com/get-your-computer-ready-for-machine-learning-how-what-and-why-you-should-use-anaconda-miniconda-d213444f36d6

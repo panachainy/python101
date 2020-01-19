@@ -39,12 +39,10 @@ You can run with `run-loc.sh`
 ### Update your DB
 
 `python manage.py migrate`
-  
+
 ### Create an admin user
 
 `python manage.py createsuperuser`
-
-
 
 ## Ref
 

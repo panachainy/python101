@@ -39,7 +39,7 @@ You can run with `run-loc.sh`
 ### Update your DB
 
 `python manage.py migrate`
-  
+
 ### Create an admin user
 
 `python manage.py createsuperuser`
@@ -73,6 +73,10 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 ```
+
+## Info
+
+- Status code https://www.django-rest-framework.org/api-guide/status-codes
 
 ## Ref
 

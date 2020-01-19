@@ -3,19 +3,24 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from tweet.models import Tweet
 from tweet.serializers import TweetSerializer
-from tweet.tweetmanament import TweetManagement
 
 #def index(request):
 #    return HttpResponse("Hello, world. You're at the polls index.")
 
 @api_view(['GET', 'POST'])
-def tweet_list(request, format=None):
+def tweet_list(request,id=None,format=None):
     """
     List all code snippets, or create a new snippet.
     """
     if request.method == 'GET':
-        tweets = Tweet.objects.all()
-        serializer = TweetSerializer(tweets, many=True)
+        print (id)
+        if id is not None:
+            tweets = Tweet.objects.get(pk=id)
+            serializer = TweetSerializer(tweets)
+        else:
+            tweets = Tweet.objects.all()
+            serializer = TweetSerializer(tweets, many=True)
+        
         return Response(serializer.data)
 
     elif request.method == 'POST':

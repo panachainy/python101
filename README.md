@@ -44,7 +44,35 @@ You can run with `run-loc.sh`
 
 `python manage.py createsuperuser`
 
+### Set PostgreSQL into Settings.py
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '<your-database-name>',
+        'USER': '<your-database-username>',
+        'PASSWORD': '<your-database-password>',
+        'HOST': '<your-database-host>',
+        'PORT': '<your-database-port>',
+    }
+}
+```
 
+### Django Rest Framework
+
+ - Install our package requirements
+
+`pip install djangorestframework`
+
+`pip install pygments`
+
+ - Add INSTALLED_APPS
+
+```json
+INSTALLED_APPS = [
+    'rest_framework',
+]
+```
 
 ## Ref
 

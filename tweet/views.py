@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from tweet.models import Tweet
 from tweet.serializers import TweetSerializer
+from tweet.business import TweetManagement
 
 #def index(request):
 #    return HttpResponse("Hello, world. You're at the polls index.")
@@ -47,10 +48,8 @@ def tweet_retweet(request, id, format=None):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'POST':
-        data = request.data["tweet"]
-        data["is_retweet"] = True
-        serializer = TweetSerializer(data=data)
-        
+        tweet_manage = TweetManagement()
+        serializer = tweet_manage.retweet_new(tweet,request.data["tweet"])
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

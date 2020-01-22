@@ -44,7 +44,12 @@ You can run with `run-loc.sh`
 
 `python manage.py createsuperuser`
 
+### New apps
+
+`python manage.py startapp <your-app>`
+
 ### Set PostgreSQL into Settings.py
+
 ```
 DATABASES = {
     'default': {
@@ -60,18 +65,16 @@ DATABASES = {
 
 ### Django Rest Framework
 
- - Install our package requirements
+- Install our package requirements
 
 `pip install djangorestframework`
 
 `pip install pygments`
 
- - Add INSTALLED_APPS
+- Add INSTALLED_APPS
 
 ```json
-INSTALLED_APPS = [
-    'rest_framework',
-]
+(INSTALLED_APPS = ["rest_framework"])
 ```
 
 ## Info

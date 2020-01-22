@@ -7,19 +7,18 @@ class TweetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tweet
-        fields = ['id','body','is_retweet']
+        fields = ['id','body','is_retweet','author','created_at','updated_at']
 
     def create(self, validated_data):
         """
-        Create and return a new `Snippet` instance, given the validated data.
+        Create and return a new `Tweet` instance, given the validated data.
         """
         return Tweet.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         """
-        Update and return an existing `Snippet` instance, given the validated data.
+        Update and return an existing `Tweet` instance, given the validated data.
         """
-        instance = validated_data.get('id', instance.id)
-        instance.body = validated_data.get('code', instance.code)
+        instance.body = validated_data["body"]
         instance.save()
         return instance

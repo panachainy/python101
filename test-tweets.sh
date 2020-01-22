@@ -1,0 +1,1 @@
+http http://127.0.0.1:8000/tweets "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTc5NzA4OTY2LCJqdGkiOiJmY2YwMjlkN2Q1Y2I0MDMxODczMmQzMjE0NjYzNjM1MyIsInVzZXJfaWQiOjF9.0IDslbao8t55nj2p5-wDF82V8iMtkFZsp0yWfh71eQU"

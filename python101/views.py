@@ -18,7 +18,11 @@ from .serializers import UserSigninSerializer, UserSerializer
 # here we specify permission by default we set IsAuthenticated
 @permission_classes((AllowAny,))
 def signin(request):
+
     signin_serializer = UserSigninSerializer(data=request.data)
+
+    print(signin_serializer)
+
     if not signin_serializer.is_valid():
         return Response(signin_serializer.errors, status=HTTP_400_BAD_REQUEST)
     email = signin_serializer.data['email']

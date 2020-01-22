@@ -11,7 +11,7 @@ from rest_framework import permissions
 
 
 @api_view(['GET', 'POST'])
-class tweet_list(request, id=None, format=None):
+def tweet_list(request, id=None, format=None):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     """
@@ -37,7 +37,7 @@ class tweet_list(request, id=None, format=None):
 
 
 @api_view(['POST', 'PUT', 'DELETE'])
-class tweet_retweet(request, id, format=None):
+def tweet_retweet(request, id, format=None):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     """

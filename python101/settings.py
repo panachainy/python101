@@ -147,5 +147,3 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
-
-TOKEN_EXPIRED_AFTER_SECONDS = 3600

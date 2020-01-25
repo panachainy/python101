@@ -83,9 +83,37 @@ INSTALLED_APPS = [
 ]
 ```
 
+### Set Environment Variable
+
+Step:
+ - Connect your environment
+
+    `conda activate your-env`
+ 
+ - Can update environment config in file environment.sh 
+ 
+ - Run environment config into your environment
+    
+
+    Sqlite
+
+    `run environment.sh`
+    
+    Postgres
+
+    `run environment.sh postgres`
+  
+  - Reactivate environment
+  
+    `conda deactivate`
+    
+    `conda actiavte your-env`
+
+
 ## Info
 
 - Status code https://www.django-rest-framework.org/api-guide/status-codes
+
 
 ## Ref
 

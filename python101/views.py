@@ -18,10 +18,7 @@ from .serializers import UserSigninSerializer, UserSerializer
 # here we specify permission by default we set IsAuthenticated
 @permission_classes((AllowAny,))
 def signin(request):
-
     signin_serializer = UserSigninSerializer(data=request.data)
-
-    print(signin_serializer)
 
     if not signin_serializer.is_valid():
         return Response(signin_serializer.errors, status=HTTP_400_BAD_REQUEST)
@@ -31,6 +28,7 @@ def signin(request):
         username=username,
         password=signin_serializer.data['password']
     )
+
     if not user:
         return Response({'detail': 'Invalid Credentials or activate account'}, status=HTTP_404_NOT_FOUND)
 

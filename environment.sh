@@ -17,7 +17,6 @@ echo export SECRET_KEY=\'%5l\$psqo^pd3#\$chzs9l_y6\$j3otm41dr\*f\&sxcquay7^c2oh#
 # Set Environment of postgres
 if [[ $1 == 'postgres' ]]
 then
-    echo export DJA='ICE' >> ./etc/conda/activate.d/env_vars.sh
     echo export DATABASE_ENGINE='django.db.backends.postgresql' >> ./etc/conda/activate.d/env_vars.sh
     echo export DATABASE_NAME='postgres' >> ./etc/conda/activate.d/env_vars.sh
     echo export DATABASE_USER='sa' >> ./etc/conda/activate.d/env_vars.sh

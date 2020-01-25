@@ -4,7 +4,16 @@ Local: http://127.0.0.1:8000
 
 You can run with `run-loc.sh`
 
-## First time to clone
+## Endpoint
+
+- http://127.0.0.1:8000/admin
+- http://127.0.0.1:8000/api/token/
+- http://127.0.0.1:8000/api/token/refresh/
+- http://127.0.0.1:8000/tweets
+- http://127.0.0.1:8000/api/token/refresh/
+- http://127.0.0.1:8000/api/token/refresh/
+
+## First time to cloneƒ
 
 - You must have conda and prepared environment.
 - Update dependency `pip install -r requirements.txt`

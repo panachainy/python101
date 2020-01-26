@@ -2,6 +2,7 @@ from tweet.models import Tweet
 from django.test import TestCase
 from datetime import datetime
 
+
 class Test_models(TestCase):
     def setUp(self):
         Tweet.objects.create(
@@ -12,3 +13,7 @@ class Test_models(TestCase):
     def test_tweet(self):
         qs = Tweet.objects.all()
         self.assertEqual(qs.count(), 2)
+        tw1 = Tweet.objects.get(author="one_author")
+        tw2 = Tweet.objects.get(author="two_author")
+        self.assertEqual(tw1.body, "test")
+        self.assertEqual(tw2.body, "test2")

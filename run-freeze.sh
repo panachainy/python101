@@ -1,2 +1,4 @@
 pip freeze > requirements.txt
-deactivate
+
+# deactivate
+# rm -rf venv

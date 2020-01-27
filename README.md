@@ -54,6 +54,7 @@ You can run with `run-loc.sh`
 `python manage.py createsuperuser`
 
 ### Set PostgreSQL into Settings.py
+
 ```
 DATABASES = {
     'default': {
@@ -69,19 +70,35 @@ DATABASES = {
 
 ### Django Rest Framework
 
- - Install our package requirements
+- Install our package requirements
 
 `pip install djangorestframework`
 
 `pip install pygments`
 
- - Add INSTALLED_APPS
+- Add INSTALLED_APPS
 
 ```json
-INSTALLED_APPS = [
-    'rest_framework',
-]
+(INSTALLED_APPS = ["rest_framework"])
 ```
+
+## VENV
+
+cd path to your project.
+
+Create venv on your project `python3 -m venv <folder-name>`
+
+Activate venv environment `source <folder-name>/bin/activate`
+
+### Command
+
+Check your dependency `pip list`
+
+Exit current venv `deactivate`
+
+Delete your venv `rm -rf <folder-name>`
+
+Init your venv `python3 -m venv <folder-name> --system-site-packages`
 
 ## Info
 
@@ -101,4 +118,6 @@ ref-swagger: https://django-rest-swagger.readthedocs.io/en/latest/
 
 ref-lib: https://www.reddit.com/r/django/comments/epooab/what_public_apps_do_you_use_with_mostall_of_your/
 
-ref-django-test:https://www.youtube.com/watch?v=AKqd46cexzQ
+ref-django-test: https://www.youtube.com/watch?v=AKqd46cexzQ
+
+ref-venv-mac: https://www.youtube.com/watch?v=Kg1Yvry_Ydk

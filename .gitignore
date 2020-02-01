@@ -154,8 +154,6 @@ dmypy.json
 .pyre/
 # End of https://www.gitignore.io/api/python,pycharm
 
-# Custom
-venv/
-.vscode
+#Custom
+venv
 db.sqlite3
-.idea

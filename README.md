@@ -53,6 +53,15 @@ You can run with `run-loc.sh`
 
 `python manage.py createsuperuser`
 
+### Install psycopg2 for postgres in python
+
+Install postgres.app
+
+```sh
+export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+pip install psycopg2
+```
+
 ### Set PostgreSQL into Settings.py
 
 ```

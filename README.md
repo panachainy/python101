@@ -140,6 +140,18 @@ Step:
 
 - Status code https://www.django-rest-framework.org/api-guide/status-codes
 
+## Postgres
+
+- Error PG_CONFIG 
+  
+  Ubuntu:
+
+  `sudo apt-get install libpq-dev`
+
+  Fedora:
+
+  `sudo apt-get install postgresql-devel`
+
 ## Ref
 
 ref: https://towardsdatascience.com/get-your-computer-ready-for-machine-learning-how-what-and-why-you-should-use-anaconda-miniconda-d213444f36d6
@@ -157,3 +169,5 @@ ref-lib: https://www.reddit.com/r/django/comments/epooab/what_public_apps_do_you
 ref-django-test: https://www.youtube.com/watch?v=AKqd46cexzQ
 
 ref-venv-mac: https://www.youtube.com/watch?v=Kg1Yvry_Ydk
+
+ref-postgres: https://tutorials.technology/solved_errors/9-Error-pg_config-executable-not-found.html

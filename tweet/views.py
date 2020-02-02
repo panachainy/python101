@@ -7,17 +7,17 @@ from rest_framework.permissions import IsAuthenticated
 from tweet.business import TweetManagement
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST','PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def tweet_list(request, id=None, format=None):
+    user_data = User.objects.get(email=request.user.email)
     if request.method == 'GET':
-        user_data = User.objects.get(email=request.user.email)
-
         if id is not None:
-            tweet = Tweet.objects.get(pk=id)
+            tweet = get_tweet_by(id)
             if tweet.owner.email != user_data.email:
                 return Response("Unauthorize this content",status.HTTP_401_UNAUTHORIZED)
             serializer = TweetSerializer(tweet)
+            response_data = serializer.data
         else:
             tweets = Tweet.objects.all().filter(owner=user_data.id)
             serializer = TweetSerializer(tweets, many=True)
@@ -25,7 +25,6 @@ def tweet_list(request, id=None, format=None):
         return Response(response_data)
 
     elif request.method == 'POST':
-        user_data = User.objects.get(email=request.user.email)
         tweet_manage = TweetManagement()
         data = tweet_manage.set_tweet_owner(request.data["tweet"],user_data)
         serializer = TweetSerializer(data=data)
@@ -36,20 +35,8 @@ def tweet_list(request, id=None, format=None):
             response_data['author'] = user_data.email
             return Response(response_data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-
-
-@api_view(['POST', 'PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])
-def tweet_retweet(request, id, format=None):
-    try:
-        user_data = User.objects.get(email=request.user.email)
-        tweet = Tweet.objects.get(pk=id)
-        if tweet.owner.email != user_data.email:
-            return Response("Unauthorize this content",status.HTTP_401_UNAUTHORIZED)
-    except Tweet.DoesNotExist:
-        return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-
-    if request.method == 'PUT':
+    elif request.method == 'PUT':
+        tweet = get_tweet_by(id)
         tweet_manage = TweetManagement()
         data = tweet_manage.set_tweet_owner(request.data["tweet"],user_data)
         serializer = TweetSerializer(tweet,data=data)
@@ -57,16 +44,36 @@ def tweet_retweet(request, id, format=None):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'POST':
+    elif request.method == 'DELETE':
+        try:
+            tweet = get_tweet_by(id)
+            tweet.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except:
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+def get_tweet_by(id):
+    if id is not None:
+        return Tweet.objects.get(pk=id)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def tweet_retweet(request, id, format=None):
+
+    """ Maybe shouldn't validate owner tweet
+    try:
+        user_data = User.objects.get(email=request.user.email)
+        tweet = Tweet.objects.get(pk=id)
+        
+        if tweet.owner.email != user_data.email:
+            return Response("Unauthorize this content",status.HTTP_401_UNAUTHORIZED)
+    except Tweet.DoesNotExist:
+        return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+    """
+    if request.method == 'POST':
         tweet_manage = TweetManagement()
         serializer = tweet_manage.retweet_new(tweet,request.data["tweet"])
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'DELETE':
-        try:
-            tweet.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        except:
-            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)

@@ -87,8 +87,8 @@ DATABASES = {
 
 - Add INSTALLED_APPS
 
-```json
-(INSTALLED_APPS = ["rest_framework"])
+```js
+INSTALLED_APPS = ["rest_framework"];
 ```
 
 ## VENV

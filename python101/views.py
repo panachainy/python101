@@ -8,12 +8,10 @@ from rest_framework.response import Response as response
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def health(request):
-    if request.method == 'GET':
-        return response(status=status.HTTP_200_OK)
+    return response(status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def health_auth(request):
-    if request.method == 'GET':
-        return response(status=status.HTTP_200_OK)
+    return response(status=status.HTTP_200_OK)

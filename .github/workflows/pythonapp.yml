@@ -28,4 +28,7 @@ jobs:
       - name: Test with pytest
         run: |
           pip install pytest
+          export SECRET_KEY=sadas2323lk232ik3j2k3jk2j3kwdksjd
+          export DATABASE_ENGINE=django.db.backends.sqlite3
+          export DATABASE_NAME=db.sqlite3
           pytest

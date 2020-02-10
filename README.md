@@ -53,7 +53,17 @@ You can run with `run-loc.sh`
 
 `python manage.py createsuperuser`
 
+### Install psycopg2 for postgres in python
+
+Install postgres.app
+
+```sh
+export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+pip install psycopg2
+```
+
 ### Set PostgreSQL into Settings.py
+
 ```
 DATABASES = {
     'default': {
@@ -69,51 +79,66 @@ DATABASES = {
 
 ### Django Rest Framework
 
- - Install our package requirements
+- Install our package requirements
 
 `pip install djangorestframework`
 
 `pip install pygments`
 
- - Add INSTALLED_APPS
+- Add INSTALLED_APPS
 
-```json
-INSTALLED_APPS = [
-    'rest_framework',
-]
+```js
+INSTALLED_APPS = ["rest_framework"];
 ```
+
+## VENV
+
+cd path to your project.
+
+Create venv on your project `python3 -m venv <folder-name>`
+
+Activate venv environment `source <folder-name>/bin/activate`
+
+### Command
+
+Check your dependency `pip list`
+
+Exit current venv `deactivate`
+
+Delete your venv `rm -rf <folder-name>`
+
+Init your venv `python3 -m venv <folder-name> --system-site-packages`
 
 ### Set Environment Variable
 
 Step:
- - Connect your environment
 
-    `conda activate your-env`
- 
- - Can update environment config in file environment.sh 
- 
- - Run environment config into your environment
-    
+- Connect your environment
+
+  `conda activate your-env`
+
+- Can update environment config in file environment.sh
+
+- Run environment config into your environment
+
 
     Sqlite
 
     `run environment.sh`
-    
+
     Postgres
 
     `run environment.sh postgres`
-  
-  - Reactivate environment
-  
-    `conda deactivate`
-    
-    `conda actiavte your-env`
 
+- Reactivate environment
+
+  `conda deactivate`
+
+  `conda actiavte your-env`
 
 ## Info
 
 - Status code https://www.django-rest-framework.org/api-guide/status-codes
-
 
 ## Ref
 
@@ -128,3 +153,7 @@ ref-test: https://docs.djangoproject.com/en/3.0/intro/tutorial05/#tests-will-sav
 ref-swagger: https://django-rest-swagger.readthedocs.io/en/latest/
 
 ref-lib: https://www.reddit.com/r/django/comments/epooab/what_public_apps_do_you_use_with_mostall_of_your/
+
+ref-django-test: https://www.youtube.com/watch?v=AKqd46cexzQ
+
+ref-venv-mac: https://www.youtube.com/watch?v=Kg1Yvry_Ydk
